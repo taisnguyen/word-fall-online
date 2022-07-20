@@ -1,4 +1,9 @@
 .git
 .env
 dist
+<<<<<<< HEAD
 node_modules
+=======
+node_modules
+.idea
+>>>>>>> origin/feat_homepage

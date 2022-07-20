@@ -25,7 +25,11 @@ export class SquareWordBoard implements WordBoard {
             
             this.letters.push(row);
         }
+<<<<<<< HEAD
     
+=======
+        
+>>>>>>> origin/feat_homepage
     }
 
     public displayGrid(): void {
@@ -37,6 +41,10 @@ export class SquareWordBoard implements WordBoard {
         }
     }
 
+<<<<<<< HEAD
 }
 
     
+=======
+}
+>>>>>>> origin/feat_homepage
