@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 // Set up server
 import { app, server } from "./setupServer.js";
 
