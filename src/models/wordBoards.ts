@@ -13,11 +13,28 @@ export class SquareWordBoard implements WordBoard {
         this.setup();
     }
 
-    public setup(): void {
+    private setup(): void {
         const alphabet = "abcdefghijklmnopqrstuvwxyz";
-        // n = 4
-        // djas jdsa jasd jdsa
-        
 
+        // Create the n-by-n grid of letters
+        this.letters = new Array<string>();
+        for (let i = 0; i < this.size; i++) {
+            let row = "";
+            for (let j = 0; j < this.size; j++)
+                row += alphabet[randNum(0, alphabet.length - 1)];
+            
+            this.letters.push(row);
+        }
+        
     }
+
+    public displayGrid(): void {
+        for (let i = 0; i < this.size; i++) {
+            let row = "";
+            for (let j = 0; j < this.size; j++)
+                row += this.letters[i][j] + " ";
+            console.log(row);
+        }
+    }
+
 }
