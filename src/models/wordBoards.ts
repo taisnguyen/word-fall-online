@@ -5,7 +5,7 @@ export interface WordBoard {
 }
 
 export class SquareWordBoard implements WordBoard {
-    private size: number;
+    private readonly size: number;
     private letters: Array<string>;
 
     public constructor(size: number) {
