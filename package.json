@@ -2,10 +2,10 @@
     "name": "word_fall_online",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "src/backend/server/index.js",
     "type": "module",
     "scripts": {
-        "run": "node ./src/server/index.js",
+        "run": "node ./src/backend/server/index.js",
         "run-watch": "nodemon --watch src ./src/server/index.js",
         "build": "webpack",
         "build-watch": "webpack --watch",
@@ -18,7 +18,8 @@
         "dotenv": "^16.0.1",
         "ejs": "^3.1.8",
         "express": "^4.18.1",
-        "sass-toolkit": "^2.10.2"
+        "sass-toolkit": "^2.10.2",
+        "socket.io": "^4.5.1"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.7",
