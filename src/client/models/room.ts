@@ -1,5 +1,5 @@
 export class Room {
-    public roomCode: str;
+    public roomCode: string;
 
     public constructor() {
 
