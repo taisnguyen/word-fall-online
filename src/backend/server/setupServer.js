@@ -13,7 +13,7 @@ const app = express();
 const server = app.listen(port, () => console.log(`listening on port ${port}`));
 app.use(express.static(path.join(__dirname, "../../dist")));
 app.use(express.json());
-app.set("views", path.join(__dirname, "../views"));
+app.set("views", path.join(__dirname, "../../client/views"));
 app.set("view engine", "ejs");
 
 export { app, server };
