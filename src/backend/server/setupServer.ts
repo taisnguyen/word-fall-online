@@ -1,13 +1,10 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 import express, { Application, Request, Response, NextFunction } from "express";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Setup server
+// Set up server
 const port = process.env.port || 3000;
 const app: Application = express();
 const server = app.listen(port, () => console.log(`listening on port ${port}`));

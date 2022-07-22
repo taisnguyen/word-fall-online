@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { getHomepage } from "../../controllers/homepageController.js"; // might have to be relative
 
-const HomepageRouter = Router();
+const homepageRouter = Router();
 
-HomepageRouter.get("/", getHomepage);
+// GET /
+homepageRouter.get("/", getHomepage);
 
-export { HomepageRouter };
+export { homepageRouter };
