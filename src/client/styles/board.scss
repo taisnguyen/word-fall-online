@@ -1,0 +1,186 @@
+.no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.word-board {
+	/** center **/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	border-radius: 4px;
+}
+
+.grid-container {
+
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	border: 4px solid #bbada0;
+	background-color: #fbfaf9;
+
+}
+
+.grid-row {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	height: 20%;
+}
+
+.grid-cell {
+	display: inline-block;
+	position: relative;
+	width: 20%;
+	height: 100%;
+	background-color: #bbada0;
+	border-radius: 4px;
+	/* box-shadow: 0 5px 15px rgba(61, 90, 108, 0.2); */
+	transition: 0.05s;
+}
+
+.letter-tile-container {
+	width: 100%;
+	height: 100%;
+}
+
+.letter-tile {
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	background-color: #eee4da;
+	border-radius: 4px;
+	transition: 0.05s;
+	transition-timing-function: ease-in;
+
+	display: flex;
+	align-items: center;
+}
+
+.letter-tile h1 {
+	width: 100%;
+	text-align: center;
+	color: #3d1818;
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	font-size: 3rem;
+
+}
+
+.letter-tile:hover {
+	background-color: #f5e7db;
+	transform: scale(1.02);
+}
+
+.letter-tile:active {
+	background-color: #f3b27a;
+	transform: scale(1.02);
+}
+
+.letter-tile[selected] {
+	background-color: #f3b27a;
+	transform: scale(1.02);
+}
+
+.line-canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.position-0-0 {
+	left: 4%;
+	top: 4%;
+}
+
+.position-0-1 {
+	left: 28%;
+	top: 4%;
+}
+
+.position-0-2 {
+	left: 52%;
+	top: 4%;
+}
+
+.position-0-3 {
+	left: 76%;
+	top: 4%;
+}
+
+.position-1-0 {
+	left: 4%;
+	top: 28%;
+}
+
+.position-1-1 {
+	left: 28%;
+	top: 28%;
+}
+
+.position-1-2 {
+	left: 52%;
+	top: 28%;
+}
+
+.position-1-3 {
+	left: 76%;
+	top: 28%;
+}
+
+.position-2-0 {
+	left: 4%;
+	top: 52%;
+}
+
+.position-2-1 {
+	left: 28%;
+	top: 52%;
+}
+
+.position-2-2 {
+	left: 52%;
+	top: 52%;
+}
+
+.position-2-3 {
+	left: 76%;
+	top: 52%;
+}
+
+.position-3-0 {
+	left: 4%;
+	top: 76%;
+}
+
+.position-3-1 {
+	left: 28%;
+	top: 76%;
+}
+
+.position-3-2 {
+	left: 52%;
+	top: 76%;
+}
+
+.position-3-3 {
+	left: 76%;
+	top: 76%;
+}
