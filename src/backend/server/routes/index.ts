@@ -2,7 +2,7 @@ import { homepageRouter } from "./homepage.js";
 import { lobbyRouter } from "./lobby.js";
 import { Application } from "express";
 
-const setupServer = (app: Application) => {
+const setupRoutes = (app: Application) => {
 
     // Homepage
     // GET / 
@@ -13,4 +13,4 @@ const setupServer = (app: Application) => {
     app.use("/lobby", lobbyRouter);
 }
 
-export { setupServer };
+export { setupRoutes };
