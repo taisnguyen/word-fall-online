@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Word Fall Online</title>
-    <link rel="stylesheet" type="text/css" href="/dist/style.css">
-</head>
-<body id="body-override">
-    <p>foo</p>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Word Fall Online</title>
+        <link rel="stylesheet" type="text/css" href="/dist/index.css">
+        <script src="homepage.js" type="module"></script>
+	</head>
 
-    <script src="index.js" type="module"></script>
-</body>
+	<body>
+		<%- include("partials/board.ejs", {letters: letters}); %>
+	</body>
 </html>
