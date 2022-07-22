@@ -6,7 +6,7 @@ const isDevelopment = mode == "development";
 module.exports = {
     mode: mode,
     entry: {
-        index: "./src/index.ts",
+        homepage: "./src/client/homepage.ts",
     },
     devtool: 'inline-source-map',
     plugins: [
