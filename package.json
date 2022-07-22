@@ -2,14 +2,15 @@
     "name": "word_fall_online",
     "version": "1.0.0",
     "description": "",
-    "main": "src/backend/server/index.js",
+    "main": "src/backend/server/index.ts",
     "type": "module",
     "scripts": {
-        "run": "node ./src/backend/server/index.js",
-        "run-watch": "nodemon --watch src ./src/server/index.js",
+        "run": "ts-node ./src/backend/server/index.ts",
+        "run-watch": "nodemon --watch src",
+        "build-ts": "npx tsc --watch",
         "build": "webpack",
         "build-watch": "webpack --watch",
-        "build-run-watch": "npm-run-all --parallel build-watch run-watch"
+        "build-run-watch": "npm-run-all --parallel build-ts build-watch run-watch"
     },
     "keywords": [],
     "author": "",
@@ -19,9 +20,11 @@
         "ejs": "^3.1.8",
         "express": "^4.18.1",
         "sass-toolkit": "^2.10.2",
-        "socket.io": "^4.5.1"
+        "socket.io": "^4.5.1",
+        "ts-node": "^10.9.1"
     },
     "devDependencies": {
+        "@types/express": "^4.17.13",
         "autoprefixer": "^10.4.7",
         "css-loader": "^6.7.1",
         "mini-css-extract-plugin": "^2.6.1",

@@ -1,4 +1,4 @@
-const getHomepage = (req, res) => {
+const getHomepage = (req: Request, res) => {
     res.render("homepage");
 }
 

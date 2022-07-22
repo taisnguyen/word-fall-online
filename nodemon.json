@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "src"
+  ],
+  "exec": [
+    "npx ts-node src/backend/server/index.ts"
+  ],
+  "execMap": {
+    "ts": "ts-node"
+  },
+  "ext": "ts,js,json"
+}
