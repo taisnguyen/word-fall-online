@@ -1,9 +1,16 @@
-import { HomepageRouter } from "./homepage.js";
-import { PlayRouter } from "./play.js";
+import { homepageRouter } from "./homepage.js";
+import { lobbyRouter } from "./lobby.js";
 import { Application } from "express";
 
-export default (app: Application) => {
-    app.use("/", HomepageRouter);
+const setupServer = (app: Application) => {
 
-    app.use("/play", PlayRouter)
+    // Homepage
+    // GET / 
+    app.use("/", homepageRouter);
+
+    // Lobby
+    // GET /lobby
+    app.use("/lobby", lobbyRouter);
 }
+
+export { setupServer };
