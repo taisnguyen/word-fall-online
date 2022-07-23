@@ -73,30 +73,26 @@
 
 	display: flex;
 	align-items: center;
-}
 
-.letter-tile h1 {
-	width: 100%;
-	text-align: center;
-	color: #3d1818;
-	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-	font-size: 3rem;
+	h1 {
+		width: 100%;
+		text-align: center;
+		color: #3d1818;
+		font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+		font-size: 3rem;
+	}
 
-}
+	&:hover, &:active, &[selected] {
+		transform: scale(1.02);
+	}
 
-.letter-tile:hover {
-	background-color: #f5e7db;
-	transform: scale(1.02);
-}
+	&:hover {
+		background-color: #f5e7db;
+	}
 
-.letter-tile:active {
-	background-color: #f3b27a;
-	transform: scale(1.02);
-}
-
-.letter-tile[selected] {
-	background-color: #f3b27a;
-	transform: scale(1.02);
+	&:active, &[selected] {
+		background-color: #f3b27a;
+	}
 }
 
 .line-canvas {
@@ -105,82 +101,11 @@
 	height: 100%;
 }
 
-.position-0-0 {
-	left: 4%;
-	top: 4%;
-}
-
-.position-0-1 {
-	left: 28%;
-	top: 4%;
-}
-
-.position-0-2 {
-	left: 52%;
-	top: 4%;
-}
-
-.position-0-3 {
-	left: 76%;
-	top: 4%;
-}
-
-.position-1-0 {
-	left: 4%;
-	top: 28%;
-}
-
-.position-1-1 {
-	left: 28%;
-	top: 28%;
-}
-
-.position-1-2 {
-	left: 52%;
-	top: 28%;
-}
-
-.position-1-3 {
-	left: 76%;
-	top: 28%;
-}
-
-.position-2-0 {
-	left: 4%;
-	top: 52%;
-}
-
-.position-2-1 {
-	left: 28%;
-	top: 52%;
-}
-
-.position-2-2 {
-	left: 52%;
-	top: 52%;
-}
-
-.position-2-3 {
-	left: 76%;
-	top: 52%;
-}
-
-.position-3-0 {
-	left: 4%;
-	top: 76%;
-}
-
-.position-3-1 {
-	left: 28%;
-	top: 76%;
-}
-
-.position-3-2 {
-	left: 52%;
-	top: 76%;
-}
-
-.position-3-3 {
-	left: 76%;
-	top: 76%;
+@for $r from 0 through 3 {
+	@for $c from 0 through 3 {
+		.position-#{$r}-#{$c} {
+			left: 4% + 24% * $c;
+			top: 4% + 24% * $r;
+		}
+	}
 }
