@@ -16,8 +16,9 @@
 
 
 	position: absolute;
+	aspect-ratio: 1;
 	width: 500px;
-	height: 500px;
+	max-width: 90%;
 	border-radius: 4px;
 }
 
