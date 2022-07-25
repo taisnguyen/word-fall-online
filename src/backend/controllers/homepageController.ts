@@ -1,4 +1,6 @@
-const getHomepage = (req: Request, res) => {
+import { Request, Response } from "express";
+
+const getHomepage = (req: Request, res: Response) => {
     res.render("homepage", {
         "letters": [
             "jcra",
