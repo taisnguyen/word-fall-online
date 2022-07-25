@@ -31,3 +31,5 @@ class LobbyService {
         return LobbyRepository.getLobby(lobbyCode);
     }
 }
+
+export { LobbyService };
