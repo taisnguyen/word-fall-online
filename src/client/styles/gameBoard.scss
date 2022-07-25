@@ -8,22 +8,17 @@
 }
 
 .word-board {
-	/** center **/
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-
-
 	position: absolute;
-	width: 500px;
-	height: 500px;
-	border-radius: 4px;
+	width: 490px;
+	height: 490px;
+	border: 5px solid #bbada0;
 }
 
 .grid-container {
-
-
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -32,9 +27,7 @@
 	width: 100%;
 	height: 100%;
 
-	border: 4px solid #bbada0;
 	background-color: #fbfaf9;
-
 }
 
 .grid-row {
@@ -47,13 +40,13 @@
 }
 
 .grid-cell {
-	display: inline-block;
 	position: relative;
+	left: 4px;
+	top: 4px;
 	width: 20%;
 	height: 100%;
-	background-color: #bbada0;
+	background-color: #c7bdb0;
 	border-radius: 4px;
-	/* box-shadow: 0 5px 15px rgba(61, 90, 108, 0.2); */
 	transition: 0.05s;
 }
 
@@ -63,6 +56,9 @@
 }
 
 .letter-tile {
+	display: flex;
+	align-items: center;
+	
 	position: absolute;
 	width: 20%;
 	height: 20%;
@@ -70,32 +66,29 @@
 	border-radius: 4px;
 	transition: 0.05s;
 	transition-timing-function: ease-in;
-
-	display: flex;
-	align-items: center;
 }
 
 .letter-tile h1 {
 	width: 100%;
+	height: 50%;
 	text-align: center;
-	color: #3d1818;
+	color: #412020;
 	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 	font-size: 3rem;
-
 }
 
 .letter-tile:hover {
-	background-color: #f5e7db;
+	background-color: #faede2;
 	transform: scale(1.02);
 }
 
 .letter-tile:active {
-	background-color: #f3b27a;
+	background-color: #fdcb84;
 	transform: scale(1.02);
 }
 
 .letter-tile[selected] {
-	background-color: #f3b27a;
+	background-color: #fdcb84;
 	transform: scale(1.02);
 }
 
@@ -105,82 +98,20 @@
 	height: 100%;
 }
 
-.position-0-0 {
-	left: 4%;
-	top: 4%;
-}
-
-.position-0-1 {
-	left: 28%;
-	top: 4%;
-}
-
-.position-0-2 {
-	left: 52%;
-	top: 4%;
-}
-
-.position-0-3 {
-	left: 76%;
-	top: 4%;
-}
-
-.position-1-0 {
-	left: 4%;
-	top: 28%;
-}
-
-.position-1-1 {
-	left: 28%;
-	top: 28%;
-}
-
-.position-1-2 {
-	left: 52%;
-	top: 28%;
-}
-
-.position-1-3 {
-	left: 76%;
-	top: 28%;
-}
-
-.position-2-0 {
-	left: 4%;
-	top: 52%;
-}
-
-.position-2-1 {
-	left: 28%;
-	top: 52%;
-}
-
-.position-2-2 {
-	left: 52%;
-	top: 52%;
-}
-
-.position-2-3 {
-	left: 76%;
-	top: 52%;
-}
-
-.position-3-0 {
-	left: 4%;
-	top: 76%;
-}
-
-.position-3-1 {
-	left: 28%;
-	top: 76%;
-}
-
-.position-3-2 {
-	left: 52%;
-	top: 76%;
-}
-
-.position-3-3 {
-	left: 76%;
-	top: 76%;
-}
+/** TODO: Dynamically create these classes eventually */
+.position-0-0 { left: 4%; top: 4%; }
+.position-0-1 { left: 28%; top: 4%; }
+.position-0-2 { left: 52%; top: 4%;}
+.position-0-3 { left: 76%; top: 4%; }
+.position-1-0 { left: 4%; top: 28%; }
+.position-1-1 { left: 28%; top: 28%; }
+.position-1-2 { left: 52%; top: 28%; }
+.position-1-3 { left: 76%; top: 28%; }
+.position-2-0 { left: 4%; top: 52%; }
+.position-2-1 { left: 28%; top: 52%; }
+.position-2-2 { left: 52%; top: 52%; }
+.position-2-3 { left: 76%; top: 52%; }
+.position-3-0 { left: 4%; top: 76%; }
+.position-3-1 { left: 28%; top: 76%; }
+.position-3-2 { left: 52%; top: 76%; }
+.position-3-3 { left: 76%; top: 76%; }
