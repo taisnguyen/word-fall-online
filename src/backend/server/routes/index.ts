@@ -1,6 +1,6 @@
 import { homepageRouter } from "./homepage.js";
 import { lobbyRouter } from "./lobby.js";
-import { Application } from "express";
+import { Application, Request, Response } from "express";
 
 const setupRoutes = (app: Application) => {
 
@@ -11,6 +11,11 @@ const setupRoutes = (app: Application) => {
     // Lobby
     // GET /lobby
     app.use("/lobby", lobbyRouter);
+
+    // 404, redirect to homepage
+    app.use((req: Request, res: Response) => {
+        res.redirect("/");
+    });
 }
 
 export { setupRoutes };
