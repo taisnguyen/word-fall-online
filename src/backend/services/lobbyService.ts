@@ -1,5 +1,5 @@
 import { Lobby } from "../models/lobby.js";
-import { LobbyRepository } from "../repositories/lobbyRepository";
+import { LobbyRepository } from "../repositories/lobbyRepository.js";
 
 class LobbyService {
     public static createLobby(lobbyCode: string): Lobby {
