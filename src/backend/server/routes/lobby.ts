@@ -3,7 +3,8 @@ import { getLobbyPage } from "../../controllers/lobbyController.js";
 
 const lobbyRouter = Router();
 
-// GET /lobby/:lobbyCode
-lobbyRouter.get("/:lobbyCode", getLobbyPage);
+// GET /lobby
+// ?: code
+lobbyRouter.get("/", getLobbyPage);
 
 export { lobbyRouter };
