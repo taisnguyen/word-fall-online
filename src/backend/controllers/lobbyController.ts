@@ -8,7 +8,7 @@ const getLobbyPage = (req: Request, res: Response) => {
     
     // Lobby does not exist
     if (lobby === null) {
-        res.render("homepage", { "letters": ["jcra", "ioet", "tai-", "snen"] });
+        res.redirect("/");
     }
 
     res.render("lobby");

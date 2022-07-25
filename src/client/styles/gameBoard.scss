@@ -1,0 +1,117 @@
+.no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.word-board {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+	width: 490px;
+	height: 490px;
+	border: 5px solid #bbada0;
+}
+
+.grid-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: #fbfaf9;
+}
+
+.grid-row {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	height: 20%;
+}
+
+.grid-cell {
+	position: relative;
+	left: 4px;
+	top: 4px;
+	width: 20%;
+	height: 100%;
+	background-color: #c7bdb0;
+	border-radius: 4px;
+	transition: 0.05s;
+}
+
+.letter-tile-container {
+	width: 100%;
+	height: 100%;
+}
+
+.letter-tile {
+	display: flex;
+	align-items: center;
+	
+	position: absolute;
+	width: 20%;
+	height: 20%;
+	background-color: #eee4da;
+	border-radius: 4px;
+	transition: 0.05s;
+	transition-timing-function: ease-in;
+}
+
+.letter-tile h1 {
+	width: 100%;
+	height: 50%;
+	text-align: center;
+	color: #412020;
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	font-size: 3rem;
+}
+
+.letter-tile:hover {
+	background-color: #faede2;
+	transform: scale(1.02);
+}
+
+.letter-tile:active {
+	background-color: #fdcb84;
+	transform: scale(1.02);
+}
+
+.letter-tile[selected] {
+	background-color: #fdcb84;
+	transform: scale(1.02);
+}
+
+.line-canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+/** TODO: Dynamically create these classes eventually */
+.position-0-0 { left: 4%; top: 4%; }
+.position-0-1 { left: 28%; top: 4%; }
+.position-0-2 { left: 52%; top: 4%;}
+.position-0-3 { left: 76%; top: 4%; }
+.position-1-0 { left: 4%; top: 28%; }
+.position-1-1 { left: 28%; top: 28%; }
+.position-1-2 { left: 52%; top: 28%; }
+.position-1-3 { left: 76%; top: 28%; }
+.position-2-0 { left: 4%; top: 52%; }
+.position-2-1 { left: 28%; top: 52%; }
+.position-2-2 { left: 52%; top: 52%; }
+.position-2-3 { left: 76%; top: 52%; }
+.position-3-0 { left: 4%; top: 76%; }
+.position-3-1 { left: 28%; top: 76%; }
+.position-3-2 { left: 52%; top: 76%; }
+.position-3-3 { left: 76%; top: 76%; }
