@@ -8,7 +8,7 @@ html, body {
 
 .word-board {
 	opacity: 0.4;
-	animation: fadeIn2 2s ease-in forwards;
+	animation: fadeIn 2s ease-in forwards;
 }
 
 .grid-container {
@@ -25,9 +25,4 @@ html, body {
 	to { opacity: 1; }
 }
 
-@keyframes fadeIn2 {
-	from { opacity: 0.4; }
-	to { opacity: 1; }
-}
-
-#loadOverlay{display: none;}
+#loadOverlay { display: none; }
