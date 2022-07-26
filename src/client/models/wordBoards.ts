@@ -44,6 +44,7 @@ export class SquareWordBoard implements WordBoard {
         let mouseDown = false;
         const letterPositions: Set<number> = new Set();
         const re = new RegExp(/position-(?<r>\d)-(?<c>\d)/);
+        let lastR: number, lastC: number;
 
         const addLetterAtMousePos = (e: MouseEvent) => {
             if (!mouseDown) return;
@@ -55,19 +56,15 @@ export class SquareWordBoard implements WordBoard {
                 const groups = letterTileClasses[1].match(re).groups;
                 const r: number = parseInt(groups.r);
                 const c: number = parseInt(groups.c);
-                let lastR: number, lastC: number;
-                try {
-                    let lastPos = Array.from(letterPositions)[letterPositions.size - 1]; // always undefined since it's a set
 
-                    lastR = Math.floor(lastPos / 10);
-                    lastC = lastPos % 10;
-                    if (letterPositions.size > 0 &&
-                        ((Math.abs(lastR - r) > 1 || Math.abs(lastC - c) > 1) || (lastR === r && lastC === c))) return;
-                } catch (error) { // first letter in the sequence
-                    // nothing.
-                }
+                if (letterPositions.size > 0 &&
+                    ((Math.abs(lastR - r) > 1 || Math.abs(lastC - c) > 1) || (lastR === r && lastC === c))) return;
 
+                const numPrevLetters = letterPositions.size;
                 letterPositions.add(r * 10 + c);
+                if (letterPositions.size === numPrevLetters) return; // if it was a duplicate letter, no new letters added
+                lastR = r;
+                lastC = c;
                 console.log(`Added letter ${r} ${c} with last letter ${lastR} ${lastC}`);
             }
         }
@@ -84,6 +81,8 @@ export class SquareWordBoard implements WordBoard {
             if (letterPositions.size == 0) return;
             this.selectWord(Array.from(letterPositions).map(pos => [Math.floor(pos / 10), pos % 10]));
             letterPositions.clear();
+            lastR = undefined;
+            lastC = undefined;
         }
 
         document.addEventListener("mousedown", onMouseDown);
