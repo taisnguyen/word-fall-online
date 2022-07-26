@@ -21,6 +21,7 @@
         "express": "^4.18.1",
         "sass-toolkit": "^2.10.2",
         "socket.io": "^4.5.1",
+        "socket.io-client": "^4.5.1",
         "ts-node": "^10.9.1"
     },
     "devDependencies": {
