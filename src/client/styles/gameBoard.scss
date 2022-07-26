@@ -9,12 +9,13 @@
 
 .word-board {
 	position: absolute;
+	aspect-ratio: 1;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	position: absolute;
 	width: 490px;
-	height: 490px;
+	max-width: 90%;
 	border: 5px solid #bbada0;
 }
 
