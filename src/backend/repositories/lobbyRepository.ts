@@ -4,7 +4,7 @@ class LobbyRepository {
     private static lobbies = new Map<string, Lobby>(); 
 
     public static addLobby(lobby: Lobby): void {
-        LobbyRepository.lobbies.set(lobby.lobbyCode, lobby);
+        LobbyRepository.lobbies.set(lobby.getLobbyCode(), lobby);
     }
 
     public static removeLobby(lobbyCode: string): void {
