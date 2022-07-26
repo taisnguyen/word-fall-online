@@ -65,6 +65,7 @@ export class SquareWordBoard implements WordBoard {
                 if (letterPositions.size === numPrevLetters) return; // if it was a duplicate letter, no new letters added
                 lastR = r;
                 lastC = c;
+                this.selectLetter(r, c);
                 console.log(`Added letter ${r} ${c} with last letter ${lastR} ${lastC}`);
             }
         }
@@ -81,6 +82,7 @@ export class SquareWordBoard implements WordBoard {
             if (letterPositions.size == 0) return;
             this.selectWord(Array.from(letterPositions).map(pos => [Math.floor(pos / 10), pos % 10]));
             letterPositions.clear();
+            this.clearLetterSelection();
             lastR = undefined;
             lastC = undefined;
         }
@@ -91,6 +93,22 @@ export class SquareWordBoard implements WordBoard {
         document.addEventListener("touchcancel", onMouseUp);
         document.addEventListener("mousemove", addLetterAtMousePos);
         document.addEventListener("touchmove", addLetterAtMousePos);
+    }
+
+    private clearLetterSelection() {
+        // TODO Clear lines that show selection
+        document.dispatchEvent(new CustomEvent("letterSelectionCleared"));
+    }
+
+    private selectLetter(r: number, c: number) {
+        // TODO Draw lines to show selection
+        document.dispatchEvent(new CustomEvent("letterSelectionAdded", {
+            detail: {
+                position: [r, c],
+                r: r,
+                c: c,
+            }
+        }))
     }
 
     private selectWord(letterPositions: Array<Array<number>>) {
