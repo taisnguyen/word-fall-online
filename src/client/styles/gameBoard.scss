@@ -59,6 +59,7 @@
 .letter-tile {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	
 	position: absolute;
 	width: 20%;
@@ -67,30 +68,53 @@
 	border-radius: 4px;
 	transition: 0.05s;
 	transition-timing-function: ease-in;
-}
 
-.letter-tile h1 {
-	width: 100%;
-	height: 50%;
-	text-align: center;
 	color: #412020;
 	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
 	font-size: 3rem;
+	font-weight: bold;
 }
 
 .letter-tile:hover {
 	background-color: #faede2;
-	transform: scale(1.02);
+	transform: translate(1px, 1px);
 }
 
 .letter-tile:active {
 	background-color: #fdcb84;
-	transform: scale(1.02);
+	transform: translate(4px, 4px);
 }
 
 .letter-tile[selected] {
 	background-color: #fdcb84;
-	transform: scale(1.02);
+	transform: translate(4px, 4px);
+}
+
+.selection-letter-tile-container {
+	display: flex;
+	justify-content: center;
+	gap: 6px;
+
+	position: absolute;
+	width: 100%;
+	top: -50px;
+}
+
+.selection-letter-tile {
+	display: flex;
+	align-items: center;
+
+	justify-content: center;
+	width: 30px;
+	height: 30px;
+	
+	font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #412020;
+	background-color: #eee4da;
+	border-radius: 4px;
+	box-shadow: 2px 2px 0 1px #c7bdb0;
 }
 
 .line-canvas {
