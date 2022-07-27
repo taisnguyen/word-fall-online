@@ -35,8 +35,8 @@ export class SquareWordBoard implements WordBoard {
             if (letterTile.classList[0] !== ("letter-tile")) 
                 return;
 
-            this.addLetterAtMousePos(e);
             this.mouseDown = true;
+            this.addLetterAtMousePos(e);
         }
 
         const onMouseUp = (e: MouseEvent | TouchEvent): void => {
