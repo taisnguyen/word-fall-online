@@ -82,7 +82,8 @@ export class SquareWordBoard implements WordBoard {
     }
 
     private updateWordSelection(e: MouseEvent | TouchEvent): void {
-        e.preventDefault(); // Mobile, prevent scrolling
+        if (e instanceof TouchEvent)
+            e.preventDefault(); // Mobile, prevent scrolling
 
         if (!this.mouseDown) return;
 
