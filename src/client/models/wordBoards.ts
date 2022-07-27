@@ -13,8 +13,9 @@ export class SquareWordBoard implements WordBoard {
 
     private mouseDown: boolean = false;
     private lastTouchEvent: TouchEvent;
-    private lastR: number;
-    private lastC: number;
+    private currentR: number;
+    private currentC: number;
+    private posCoefficient: number;
 
     public constructor(letters: Array<string>, boardDiv: HTMLElement) {
         this.letters = letters;
@@ -25,6 +26,7 @@ export class SquareWordBoard implements WordBoard {
     }
 
     private setup(): void {
+        // Play initial falling animation when page loads
         window.onload = this.playinitialFallingAnimation.bind(this);
 
         const onMouseDown = (e: MouseEvent | TouchEvent): void => {
@@ -36,16 +38,15 @@ export class SquareWordBoard implements WordBoard {
                 return;
 
             this.mouseDown = true;
-            this.addLetterAtMousePos(e);
+            this.updateWordSelection(e);
         }
 
         const onMouseUp = (e: MouseEvent | TouchEvent): void => {
-            this.addLetterAtMousePos((e instanceof MouseEvent) ? e : this.lastTouchEvent);
+            this.updateWordSelection((e instanceof MouseEvent) ? e : this.lastTouchEvent);
 
             // Unhighlight all selected letters
             this.selectedletterPositions.forEach((pos: number) => {
-                const r: number = Math.floor(pos / 10);
-                const c: number = pos % 10;
+                const [r, c] = this.getRowColFromPos(pos);
                 const letterTile = this.div.querySelector(`.position-${r}-${c}`);
                 letterTile.removeAttribute("selected");
             });
@@ -53,10 +54,10 @@ export class SquareWordBoard implements WordBoard {
             this.mouseDown = false;
             if (this.selectedletterPositions.size == 0) return;
 
-            this.playWord(Array.from(this.selectedletterPositions).map(pos => [Math.floor(pos / 10), pos % 10]));
+            this.playWord(Array.from(this.selectedletterPositions).map(pos => this.getRowColFromPos(pos)));
             this.selectedletterPositions.clear();
-            this.lastR = undefined;
-            this.lastC = undefined;
+            this.currentR = undefined;
+            this.currentC = undefined;
             this.clearSelectionDisplay();
         }
 
@@ -66,40 +67,72 @@ export class SquareWordBoard implements WordBoard {
         this.div.addEventListener("touchstart", onMouseDown); // Mobile
         document.addEventListener("touchend", onMouseUp); // Mobile
 
-        this.div.addEventListener("mousemove", this.addLetterAtMousePos.bind(this));
-        this.div.addEventListener("touchmove", this.addLetterAtMousePos.bind(this));
+        this.div.addEventListener("mousemove", this.updateWordSelection.bind(this));
+        this.div.addEventListener("touchmove", this.updateWordSelection.bind(this));
     }
 
-    private addLetterAtMousePos(e: MouseEvent | TouchEvent): void {
-        e.preventDefault();
+    private getPosFromRowCol(r: number, c: number): number {
+        return r * this.size + c;
+    }
+
+    private getRowColFromPos(pos: number): [number, number] {
+        const r: number = Math.floor(pos / this.size);
+        const c: number = pos % this.size;
+        return [r, c];
+    }
+
+    private updateWordSelection(e: MouseEvent | TouchEvent): void {
+        e.preventDefault(); // Mobile, prevent scrolling
 
         if (!this.mouseDown) return;
+
+        // Store last TouchEvent since the "touchend" event doesn't have clientX and clientY properties
         if (e instanceof TouchEvent && e.touches.length > 0) this.lastTouchEvent = e; // Mobile
-    
-        const re = new RegExp(/position-(?<r>\d)-(?<c>\d)/);
+
         const mouseX: number = (e as MouseEvent).clientX || (e as TouchEvent).touches[0].clientX;
         const mouseY: number = (e as MouseEvent).clientY || (e as TouchEvent).touches[0].clientY;
         const letterTile = document.elementFromPoint(mouseX, mouseY);
         const letterTileClasses = (letterTile !== null) ? letterTile.classList : new Array<string>();
 
         if (letterTileClasses[0] === "letter-tile") {
-            const groups = letterTileClasses[1].match(re).groups;
+            const groups = letterTileClasses[1].match(/position-(?<r>\d)-(?<c>\d)/).groups;
             const r: number = parseInt(groups.r);
             const c: number = parseInt(groups.c);
+            const pos: number = this.getPosFromRowCol(r, c);
 
             // If the letter is not adjacent to the last selected letter, return
-            if (this.selectedletterPositions.size > 0 && ((Math.abs(this.lastR - r) > 1 || Math.abs(this.lastC - c) > 1) || (this.lastR === r && this.lastC === c))) 
+            if (this.selectedletterPositions.size > 0 && ((Math.abs(this.currentR - r) > 1 || Math.abs(this.currentC - c) > 1) || (this.currentR === r && this.currentC === c))) 
                 return;
+
+            const deleteLetter = (pos: number): void => {
+                const [row, col] = this.getRowColFromPos(pos);
+                const currentLetterTile = this.div.querySelector(`.position-${row}-${col}`);
+                currentLetterTile.removeAttribute("selected");
+
+                this.selectedletterPositions.delete(this.getPosFromRowCol(row, col));
+                this.removeLetterFromSelectionDisplay();
+            }
+
+            // If a hovered letter is already selected, delete it and all letters after it
+            if (this.selectedletterPositions.has(pos)) {
+                const selectedletterPositionsArray = Array.from(this.selectedletterPositions);
+                const selectedPosIndex = selectedletterPositionsArray.indexOf(pos);
+                for (let i=0; i<(selectedletterPositionsArray.length - selectedPosIndex); i++)
+                    deleteLetter(selectedletterPositionsArray[selectedPosIndex + i]);
+
+                this.currentR = r;
+                this.currentC = c;
+            }
 
             // Since this.selectedletterPositions is a set, this will only add the letter if it is not already in the set
             const numPrevLetters = this.selectedletterPositions.size;
-            this.selectedletterPositions.add(r * 10 + c);
+            this.selectedletterPositions.add(pos);
 
-                // If it was a duplicate letter, no new letters added
+            // If it was a duplicate letter, no new letters added
             if (this.selectedletterPositions.size === numPrevLetters) return;
             
-            this.lastR = r;
-            this.lastC = c;
+            this.currentR = r;
+            this.currentC = c;
             letterTile.setAttribute("selected", "true");
 
             const letter: string = this.div.querySelector(`.position-${r}-${c}`).innerHTML;
@@ -134,6 +167,12 @@ export class SquareWordBoard implements WordBoard {
         selectionletterTile.classList.add("selection-letter-tile");
         selectionletterTile.innerHTML = letter;
         selectionLetterTileContainer.appendChild(selectionletterTile);
+    }
+
+    private removeLetterFromSelectionDisplay(): void {
+        const selectionLetterTileContainer = this.div.querySelector(".selection-letter-tile-container");
+        if (selectionLetterTileContainer.lastElementChild !== null) 
+            selectionLetterTileContainer.removeChild(selectionLetterTileContainer.lastElementChild);
     }
 
     private clearSelectionDisplay(): void {
