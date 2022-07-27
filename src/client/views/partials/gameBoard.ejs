@@ -2,6 +2,9 @@
     <canvas class="line-canvas">
     </canvas>
 
+    <div class="selection-letter-tile-container no-select">
+    </div>
+
     <div class="grid-container no-select">
         <% for (let i = 0; i < 4; i++) { %>
             <div class="grid-row">
@@ -17,7 +20,7 @@
             <% for (let c = 0; c < 4; c++) { %>
                 <% const letter = letters[r][c]; %>
                 <% if (letter !== "-") { %>
-                    <div class="letter-tile position-<%= r %>-<%= c %>"><h1><%= letter.toUpperCase() %></h1></div>
+                    <div class="letter-tile position-<%= r %>-<%= c %>"><%= letter.toUpperCase() %></div>
                 <% } %>
             <% } %>
         <% } %>
