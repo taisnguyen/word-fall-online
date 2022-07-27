@@ -123,6 +123,11 @@ export class SquareWordBoard implements WordBoard {
 
                 this.currentR = r;
                 this.currentC = c;
+                document.dispatchEvent(new CustomEvent("lettersDeselected", {
+                    detail: {
+                        numDeselected: selectedLetterPositionArray.length - selectedPosIndex,
+                    }
+                }));
             }
 
             // Since this.selectedLetterPositions is a set, this will only add the letter if it is not already in the set
@@ -138,6 +143,13 @@ export class SquareWordBoard implements WordBoard {
 
             const letter: string = this.div.querySelector(`.position-${r}-${c}`).innerHTML;
             this.addLetterToSelectionDisplay(letter);
+            document.dispatchEvent(new CustomEvent("letterSelected", {
+                detail: {
+                    position: [r, c],
+                    r: r,
+                    c: c,
+                }
+            }));
         }
     }
 
