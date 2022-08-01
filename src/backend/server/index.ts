@@ -1,10 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { LobbyService } from "../services/lobbyService.js";
-LobbyService.createLobby("12341");
-
-
 // Set up server
 import { app, server } from "./setupServer.js";
 
