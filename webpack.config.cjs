@@ -9,7 +9,7 @@ module.exports = {
     mode: mode,
     entry: {
         homepage: "./src/client/homepage.ts",
-        lobby: "./src/client/lobby.ts",
+        room: "./src/client/room.ts",
     },
     devtool: 'inline-source-map',
     plugins: [
